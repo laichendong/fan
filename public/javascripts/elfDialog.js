@@ -49,7 +49,7 @@ var ElfDialog = {
 			return this.dialog({
 				"value":value,
 				"title":title,
-				"autoClose":3000,
+				"autoClose":2500,
 				width:250
 			});
 		}
