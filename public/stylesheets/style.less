@@ -1,5 +1,6 @@
 @aColor: #f60;
 @fontColor: #143352;
+@bkColor: #79C3D2;
 .border-radius(@radius: 5px) {
     border-radius: @radius;
     -moz-border-radius: @radius;
@@ -37,15 +38,15 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video{
+time, mark, audio, video {
     margin: 0;
     padding: 0;
-    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 18px "Lucida Grande", "微软雅黑", Arial, sans-serif;
     line-height: 1.5em;
 }
 
 body {
-    background: #79c3d2;
+    background: @bkColor;
     color: @fontColor;
 }
 
@@ -107,12 +108,12 @@ ol, ul, li {
 
 #side {
     .border-radius;
-    background: #79c3d2;
+    background: @bkColor;
     width: 280px;
     position: absolute;
     top: 10px;
     right: 10px;
-    .box-shadow-inset(2px, 2px, 3px);
+    .box-shadow-inset(2px, 2px, 3px, darken(@bkColor, 30%));
     padding: 5px;
     color: #ffffff;
 }
@@ -155,7 +156,58 @@ ol, ul, li {
     }
 
 }
-
+a.btn{
+    text-decoration: none;
+    display: inline-block;
+    height: 25px;
+    padding: 0 5px;
+    font-size: 12px;
+    background: @bkColor;
+    .border-radius(2px);
+    .box-shadow(1px, 1px, 1px, #666);
+    text-align: center;
+    line-height: 25px;
+    margin: 0px 5px;
+    color:#fff;
+    text-shadow: -1px -1px 1px #666;
+}
+a.btn:hover{
+    text-shadow: 0 0 1px #fff;
+    background: lighten(@bkColor, 10%);
+}
+#fan-submit {
+    float: right;
+    margin: 0px 30px 0 0;
+    font-size: 24px;
+    height: 40px;
+    line-height: 40px;
+}
+.dish {
+    margin-top: 20px;;
+}
 .dish-item:hover .dish-info {
     .fn-show;
 }
+
+.dish-checked {
+    .box-shadow(0px, 0px, 10px, red);
+}
+
+.rice {
+    margin-right: 20px;
+}
+
+.rice-container, .bred-container {
+    display: inline-block;
+    vertical-align: bottom;
+    line-height: 0;
+}
+
+.rice-img, .bred-img {
+    width: 30px;
+    height: 30px;
+    margin: 0px 3px;
+    .border-radius(2px);
+    .box-shadow(0px, 0px, 2px, #fff);
+}
+
