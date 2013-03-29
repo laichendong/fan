@@ -1,0 +1,161 @@
+@aColor: #f60;
+@fontColor: #143352;
+.border-radius(@radius: 5px) {
+    border-radius: @radius;
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+}
+
+.box-shadow(@x: 0, @y: 0, @blur: 1px, @color: #333) {
+    box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+    -webkit-box-shadow: @arguments;
+}
+
+.box-shadow-inset(@x: 0, @y: 0, @blur: 1px, @color: #999) {
+    box-shadow: @arguments inset;
+    -moz-box-shadow: @arguments inset;
+    -webkit-box-shadow: @arguments inset;
+}
+
+.wrap() {
+    text-wrap: wrap;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    word-wrap: break-word;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+    margin: 0;
+    padding: 0;
+    font: 18px "Lucida Grande", Helvetica, Arial, sans-serif;
+    line-height: 1.5em;
+}
+
+body {
+    background: #79c3d2;
+    color: @fontColor;
+}
+
+a {
+    color: @aColor;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bolder;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+.fn-hide {
+    display: none;
+}
+
+.fn-show {
+    display: block;
+}
+
+.fn-fl {
+    float: left;
+}
+
+.fn-fr {
+    float: right;
+}
+
+.fn-clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+// ----------------------------------------------------------
+
+#content {
+    background: #d9eef2;
+    .border-radius;
+    width: 1104px;
+    padding: 10px;
+    margin: 30px auto;
+    .box-shadow(0, 0, 10px);
+    position: relative;
+    min-height: 600px;
+}
+
+#main {
+    width: 815px;
+    min-height: 600px;
+}
+
+#side {
+    .border-radius;
+    background: #79c3d2;
+    width: 280px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    .box-shadow-inset(2px, 2px, 3px);
+    padding: 5px;
+    color: #ffffff;
+}
+
+.dish-item {
+    float: left;
+    margin: 5px;
+    width: 150px;
+    height: 150px;
+    background: #999;
+    .border-radius(3px);
+    position: relative;
+    cursor: pointer;
+    .box-shadow(2px, 2px, 2px, #ccc);
+    .dish-photo img {
+        width: 150px;
+        height: 150px;
+        .border-radius(3px);
+    }
+    .dish-info {
+        width: 150px;
+        height: 150px;
+        background: #000;
+        opacity: 0.5;
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        .border-radius(3px);
+        p {
+            position: absolute;
+        }
+        .dish-name {
+            bottom: 35px;
+        }
+        .dish-price {
+            bottom: 0;
+            color: #ff0000;
+        }
+    }
+
+}
+
+.dish-item:hover .dish-info {
+    .fn-show;
+}
