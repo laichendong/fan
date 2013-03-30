@@ -99,14 +99,35 @@ $(function () {
      * 选好餐了，提交
      */
     $("#fan-submit").click(function () {
+        // 验证用户名是否已经验证
+        var $userName = $("input[name='userName']");
+        if (!$userName.data("validated")) {
+            if($userName.val()){
+                // 如果发现用户名里有值，但显示没验证通过，则等待一会儿，防止ajax验证结果还没返回
+                sleep(800);
+            }
+            if (!$userName.data("validated")) {
+                ElfDialog.alert("我们还不知道你是谁呢！");
+                return;
+            }
+        }
         // 验证选择的主食数量
         if ($(".rice-img").size() + $(".bred-img").size() <= 0) {
             ElfDialog.confirm("确定不吃主食？", "", function () {
-                ElfDialog.pop("不吃");
+                ElfDialog.close();
+                // 验证菜的数量
+                if($(".dish-item.dish-checked").size() == 0){
+                    ElfDialog.alert("大家都不选菜，就没法吃了！");
+                }
             }, function () {
-                ElfDialog.pop("吃");
+                ElfDialog.close();
             });
         }
+
     });
-})
-;
+});
+
+function sleep(millisecond) {
+    var start = new Date().getTime();
+    while (true) if (new Date().getTime() - start > millisecond) break;
+}
