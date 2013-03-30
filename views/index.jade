@@ -13,7 +13,7 @@ html
                 // 个人信息
                 p
                     lebel 我是：
-                        input(type="text", name="email", value="邮箱地址")
+                        input(type="text", name="user", value="")
                 h1 我想吃：
                     // 确定按钮
                     a#fan-submit.btn(href="javascript:void(0);") 我选好了
@@ -33,13 +33,17 @@ html
                 // 菜谱
                 div.dish
                     ul.fn-clearfix
-                        - for (var i=0; i<20; i++)
+                        - for (var i=0; i<dishs.length; i++)
                             li.dish-item
                                 div.dish-photo
-                                    img(src="http://i1.meishichina.com/Eat/UploadFiles1017/201303/2013031810462397.jpg")
+                                    // todo 属性里绑定数据的写法？
+                                    img(src="= dishs[i].photoUrl")
                                 div.dish-info.fn-hide
-                                    p.dish-name 鱼香肉丝
-                                    p.dish-price ￥36.00元
+                                    p.dish-name= dishs[i].name
+                                    p.dish-price ￥
+                                        // todo 嵌入js脚本，toFixed(2)
+                                        = dishs[i].price
+                                        |元
 
             // 侧边栏
             div#side
