@@ -66,7 +66,7 @@ $(function () {
      * 重新计算页面的主食和菜数
      */
     reCount();
-    function reCount(){
+    function reCount() {
         $("#riceTotalCount").text(parseInt($("#riceTotalCount").attr("origValue")) + $(".rice-img").size());
         $("#bredTotalCount").text(parseInt($("#bredTotalCount").attr("origValue")) + $(".bred-img").size());
     }
@@ -81,10 +81,15 @@ $(function () {
             $.getJSON("/users/valiedateUser", {
                 "userName": userName
             }, function (json) {
-                if(json && json.valiedated){
+                if (json && json.valiedated) {
                     // 验证通过
+                    $userName.data("validated", json.valiedated)
+                        .next(".error").remove().end()
+                        .after('<span class="info">来来，快看今天吃什么。</span>');
                 } else {
-                    $userName.after('<span class="error">你还不是我们饭团成员，去<a href="mailto:laichendong@gmail.com">申请</a>吧</span> ');
+                    $userName.data("validated", json.valiedated)
+                        .next(".error").remove().end()
+                        .after('<span class="error">你还不是我们饭团成员，去<a href="mailto:laichendong@gmail.com">申请</a>吧</span>');
                 }
             });
         }
@@ -93,12 +98,12 @@ $(function () {
     /**
      * 选好餐了，提交
      */
-    $("#fan-submit").click(function(){
+    $("#fan-submit").click(function () {
         // 验证选择的主食数量
-        if($(".rice-img").size() + $(".bred-img").size() <= 0){
-            ElfDialog.confirm("确定不吃主食？","", function(){
+        if ($(".rice-img").size() + $(".bred-img").size() <= 0) {
+            ElfDialog.confirm("确定不吃主食？", "", function () {
                 ElfDialog.pop("不吃");
-            },function(){
+            }, function () {
                 ElfDialog.pop("吃");
             });
         }
