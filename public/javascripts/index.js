@@ -62,14 +62,19 @@ $(function () {
         }
     });
 
+    /**
+     * 重新计算页面的主食和菜数
+     */
     reCount();
     function reCount(){
         $("#riceTotalCount").text(parseInt($("#riceTotalCount").attr("origValue")) + $(".rice-img").size());
         $("#bredTotalCount").text(parseInt($("#bredTotalCount").attr("origValue")) + $(".bred-img").size());
     }
 
+    /**
+     * 用户名失去焦点，ajax验证用户有效性
+     */
     $("input[name='userName']").focus().blur(function () {
-        // 用户名失去焦点，ajax验证用户有效性
         var $userName = $(this);
         var userName = $(this).val().trim();
         if (userName) {
@@ -85,5 +90,18 @@ $(function () {
         }
     });
 
+    /**
+     * 选好餐了，提交
+     */
+    $("#fan-submit").click(function(){
+        // 验证选择的主食数量
+        if($(".rice-img").size() + $(".bred-img").size() <= 0){
+            ElfDialog.confirm("确定不吃主食？","", function(){
+                ElfDialog.pop("不吃");
+            },function(){
+                ElfDialog.pop("吃");
+            });
+        }
+    });
 })
 ;
