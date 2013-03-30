@@ -84,7 +84,7 @@ $(function () {
                 if (json && json.valiedated) {
                     // 验证通过
                     $userName.data("validated", json.valiedated)
-                        .next(".error").remove().end()
+                        .next(".info").remove().end()
                         .after('<span class="info">来来，快看今天吃什么。</span>');
                 } else {
                     $userName.data("validated", json.valiedated)
