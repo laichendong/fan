@@ -170,7 +170,8 @@ var ElfDialog = {
 		var viewportW = $(window).width();
 		var viewportH = $(window).height();
 		var dialog = $("body").find(".elfDialogMain");
-		dialog.offset({top : (viewportH - dialog.height() + window.pageYOffset) * 0.4, left : viewportW/2 - dialog.width()/2})  + window.pageXOffset;
+//		dialog.offset({top : (viewportH - dialog.height() + window.pageYOffset) * 0.4, left : viewportW/2 - dialog.width()/2})  + window.pageXOffset;
+		dialog.css({top : (viewportH - dialog.height() + window.pageYOffset) * 0.4 + "px", left : viewportW/2 - dialog.width()/2 + "px"})  + window.pageXOffset;
 	},
 	_overlay : function(overlaySettings){
 		var elfDialogOverlay = $('<div class="elfDialogOverlay"></div>')

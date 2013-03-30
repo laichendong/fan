@@ -87,7 +87,8 @@ ol, ul, li {
     clear: both;
     height: 0;
 }
-.error{
+
+.error {
     color: darken(#ff0000, 10%);
     font-size: 12px;
     background: lighten(#ff0000, 40%);
@@ -95,14 +96,38 @@ ol, ul, li {
     padding: 3px;
     margin-left: 10px;
 }
+.row{
+    margin-top: 15px;
+}
+
 // ----------------------------------------------------------
+#top {
+    width: 1104px;
+    padding: 10px;
+    margin: 30px auto;
+    #title, #secend-title {
+        font-size: 100px;
+        text-shadow: -1px -1px 1px #fff;
+        font-family: "Lucida Grande";
+    }
+    #secend-title:before {
+        content: "•";
+        padding: 10px;
+    }
+    #secend-title {
+        font-size: 60px;
+        margin-top: 40px;
+        font-family: "微软雅黑";
+        padding: 0px 10px;
+    }
+}
 
 #content {
     background: #d9eef2;
     .border-radius;
     width: 1104px;
     padding: 10px;
-    margin: 30px auto;
+    margin: 0px auto;
     .box-shadow(0, 0, 10px);
     position: relative;
     min-height: 600px;
@@ -153,7 +178,7 @@ ol, ul, li {
         p {
             position: absolute;
             left: 10px;
-            right:10px;
+            right: 10px;
         }
         .dish-name {
             bottom: 35px;
@@ -165,35 +190,42 @@ ol, ul, li {
     }
 
 }
-a.btn{
+
+.button(@fontSize: 12px) {
     text-decoration: none;
     display: inline-block;
-    height: 25px;
-    padding: 0 5px;
-    font-size: 12px;
+    height: @fontSize * 2;
+    line-height: @fontSize * 2;
+    padding: 0 @fontSize / 2;
+    font-size: @fontSize;
     background: @bkColor;
     .border-radius(2px);
     .box-shadow(1px, 1px, 1px, #666);
     text-align: center;
-    line-height: 25px;
     margin: 0px 5px;
-    color:#fff;
+    color: #fff;
     text-shadow: -1px -1px 1px #666;
 }
-a.btn:hover{
+
+.btn {
+    .button(15px);
+}
+
+.btn:hover {
     text-shadow: 0 0 1px #fff;
     background: lighten(@bkColor, 10%);
 }
-#fan-submit {
+
+.fan-submit {
+    .button(24px);
     float: right;
-    margin: 0px 30px 0 0;
-    font-size: 24px;
-    height: 40px;
-    line-height: 40px;
+    margin: 0px 21px 0 0;
 }
+
 .dish {
     margin-top: 20px;;
 }
+
 .dish-item:hover .dish-info {
     .fn-show;
 }
@@ -220,3 +252,39 @@ a.btn:hover{
     .box-shadow(0px, 0px, 2px, #fff);
 }
 
+.user {
+    height: 67px;
+    margin: 10px;
+    padding: 10px;
+    background: #79C3D2;
+    .border-radius(3px);
+    .box-shadow-inset(2px, 2px, 5px, darken(#79C3D2, 50%));
+    .photo-box {
+        width: 66px;
+        height: 66px;
+        position: relative;
+        display: inline-block;
+        img, .photo-cover {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            .border-radius(60px);
+            .box-shadow-inset(2px, 2px, 5px, #000);
+            border: 3px solid #eee;
+        }
+    }
+    .user-name {
+        margin-left: 10px;
+    }
+}
+
+.button-bar {
+    margin: 20px 10px 0;
+}
+
+.apply-button {
+    .button(24px);
+    margin: 0;
+}

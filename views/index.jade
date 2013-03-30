@@ -9,25 +9,29 @@ html
         //script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", type="text/javascript")
         script(src="/javascripts/jquery.js", type="text/javascript")
     body
+        div#top.fn-clearfix
+            h1#title.fn-fl 饭
+            h2#secend-title.fn-fl 点菜吃饭
         div#content
             div#main
-                // 个人信息
-                p
-                    lebel 我是：
-                        input(type="text", name="userName", value="")
-                h1 我想吃：
+                div
                     // 确定按钮
-                    a#fan-submit.btn(href="javascript:void(0);") 我选好了
+                    a#fan-submit.fan-submit.btn(href="javascript:void(0);") 我选好了
+                // 个人信息
+                div.row
+                    label 我是：
+                        input(type="text", name="userName", value="")
                 // 米饭和馒头
-                div.fn-clearfix
+                div.row.fn-clearfix
+                    div.fn-fl 我想吃：
                     div.rice.fn-fl
-                        a.rice-add-button.btn(href="javascript:void(0);") 米 ╋
-                        a.rice-reduce-button.btn(href="javascript:void(0);") 米 ━
+                        a.rice-add-button.btn(href="javascript:void(0);") 米 ▲
+                        a.rice-reduce-button.btn(href="javascript:void(0);") 米 ▼
                         span.rice-container
                             img.rice-img(src="/images/rice.png")
                     div.bred.fn-fl
-                        a.bred-add-button.btn(href="javascript:void(0);") 馒 ╋
-                        a.bred-reduce-button.btn(href="javascript:void(0);") 馒 ━
+                        a.bred-add-button.btn(href="javascript:void(0);") 馒 ▲
+                        a.bred-reduce-button.btn(href="javascript:void(0);") 馒 ▼
                         span.bred-container
                             img.bred-img(src="/images/bred.png")
 
