@@ -49,7 +49,7 @@ $(function () {
     $(".dish-item").click(function () {
         if (!$(this).data("checked")) {
             $(this).addClass("dish-checked").data("checked", true);
-            if($(".dish-item.dish-checked").size() > 3) {
+            if ($(".dish-item.dish-checked").size() > 3) {
                 ElfDialog.pop("别挑太多，把机会留给你的伙伴们吧！");
                 $(this).removeClass("dish-checked").data("checked", false);
             }
@@ -57,4 +57,23 @@ $(function () {
             $(this).removeClass("dish-checked").data("checked", false);
         }
     });
-});
+
+    $("input[name='userName']").focus().blur(function () {
+        // 用户名失去焦点，ajax验证用户有效性
+        var $userName = $(this);
+        var userName = $(this).val().trim();
+        if (userName) {
+            $.getJSON("valiedateUser", {
+                "userName": userName
+            }, function (json) {
+                if(json && json.valiedated){
+                    // 验证通过
+                } else {
+                    $userName.after('<span class="error">你还不是我们饭团成员，去<a href="mailto:laichendong@gmail.com">申请</a>吧</span> ');
+                }
+            });
+        }
+    });
+
+})
+;
