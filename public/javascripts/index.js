@@ -8,7 +8,6 @@ $(function () {
         } else {
             ElfDialog.pop("别吃太多，容易撑着。");
         }
-        reCount();
     });
 
     /**
@@ -20,7 +19,6 @@ $(function () {
         } else {
             ElfDialog.pop("已经没得吃了！");
         }
-        reCount();
     });
 
     /**
@@ -32,7 +30,6 @@ $(function () {
         } else {
             ElfDialog.pop("别吃太多，容易撑着。");
         }
-        reCount();
     });
 
     /**
@@ -44,7 +41,6 @@ $(function () {
         } else {
             ElfDialog.pop("已经没得吃了！");
         }
-        reCount();
     });
 
     /**
@@ -61,15 +57,6 @@ $(function () {
             $(this).removeClass("dish-checked").data("checked", false);
         }
     });
-
-    /**
-     * 重新计算页面的主食和菜数
-     */
-    reCount();
-    function reCount() {
-        $("#riceTotalCount").text(parseInt($("#riceTotalCount").attr("origValue")) + $(".rice-img").size());
-        $("#bredTotalCount").text(parseInt($("#bredTotalCount").attr("origValue")) + $(".bred-img").size());
-    }
 
     /**
      * 用户名失去焦点，ajax验证用户有效性
