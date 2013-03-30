@@ -8,6 +8,7 @@ $(function () {
         } else {
             ElfDialog.pop("别吃太多，容易撑着。");
         }
+        reCount();
     });
 
     /**
@@ -19,6 +20,7 @@ $(function () {
         } else {
             ElfDialog.pop("已经没得吃了！");
         }
+        reCount();
     });
 
     /**
@@ -30,6 +32,7 @@ $(function () {
         } else {
             ElfDialog.pop("别吃太多，容易撑着。");
         }
+        reCount();
     });
 
     /**
@@ -41,6 +44,7 @@ $(function () {
         } else {
             ElfDialog.pop("已经没得吃了！");
         }
+        reCount();
     });
 
     /**
@@ -58,12 +62,18 @@ $(function () {
         }
     });
 
+    reCount();
+    function reCount(){
+        $("#riceTotalCount").text(parseInt($("#riceTotalCount").attr("origValue")) + $(".rice-img").size());
+        $("#bredTotalCount").text(parseInt($("#bredTotalCount").attr("origValue")) + $(".bred-img").size());
+    }
+
     $("input[name='userName']").focus().blur(function () {
         // 用户名失去焦点，ajax验证用户有效性
         var $userName = $(this);
         var userName = $(this).val().trim();
         if (userName) {
-            $.getJSON("valiedateUser", {
+            $.getJSON("/users/valiedateUser", {
                 "userName": userName
             }, function (json) {
                 if(json && json.valiedated){
