@@ -72,9 +72,11 @@ $(function () {
                     // 验证通过
                     $userName.data("validated", json.valiedated)
                         .next(".info").remove().end()
+                        .next(".error").remove().end()
                         .after('<span class="info">来来，快看今天吃什么。</span>');
                 } else {
                     $userName.data("validated", json.valiedated)
+                        .next(".info").remove().end()
                         .next(".error").remove().end()
                         .after('<span class="error">你还不是我们饭团成员，去<a href="mailto:laichendong@gmail.com">申请</a>吧</span>');
                 }
