@@ -1,6 +1,4 @@
-/*
- * GET users listing.
- */
+
 var db = require('../data/db');
 /**
  * 饭团成员列表
@@ -16,7 +14,7 @@ exports.list = function (req, res) {
  * @param req
  * @param res
  */
-exports.valiedateUser = function (req, res) {
+exports.validateUser = function (req, res) {
     var valiedated = false;
     var userName = decodeURIComponent(req.param("userName"));
     if (userName) {
@@ -27,10 +25,11 @@ exports.valiedateUser = function (req, res) {
             }
         }
     }
+
     res.setHeader('Content-Type', 'application/json');
     if (valiedated) {
         res.send('{"valiedated" : true}');
     } else {
         res.send('{"valiedated" : false}');
     }
-}
+};

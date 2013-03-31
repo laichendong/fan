@@ -65,7 +65,7 @@ $(function () {
         var $userName = $(this);
         var userName = $(this).val().trim();
         if (userName) {
-            $.getJSON("/users/valiedateUser", {
+            $.getJSON("/users/validateUser", {
                 "userName": userName
             }, function (json) {
                 if (json && json.valiedated) {
@@ -89,7 +89,7 @@ $(function () {
         // 验证用户名是否已经验证
         var $userName = $("input[name='userName']");
         if (!$userName.data("validated")) {
-            if($userName.val()){
+            if ($userName.val()) {
                 // 如果发现用户名里有值，但显示没验证通过，则等待一会儿，防止ajax验证结果还没返回
                 sleep(800);
             }
@@ -100,18 +100,37 @@ $(function () {
         }
         // 验证选择的主食数量
         if ($(".rice-img").size() + $(".bred-img").size() <= 0) {
-            ElfDialog.confirm("确定不吃主食？", "", function () {
-                ElfDialog.close();
-                // 验证菜的数量
-                if($(".dish-item.dish-checked").size() == 0){
-                    ElfDialog.alert("大家都不选菜，就没法吃了！");
-                }
-            }, function () {
-                ElfDialog.close();
-            });
+            ElfDialog.alert("人是铁，饭是钢。主食还是要吃的。");
+            return;
         }
+        // 验证菜的数量
+        var $dishChecked = $(".dish-item.dish-checked");
+        if ($dishChecked.size() == 0) {
+            ElfDialog.alert("大家都不选菜，就没法吃了！");
+            return;
+        }
+        // 提交数据到后台
+        fan();
 
     });
+
+    /**
+     * 提交数据到后台
+     */
+    function fan() {
+        var dishs = [];
+        $(".dish-item.dish-checked").each(function (i) {
+            dishs.push($(this).find(".dish-name").text());
+        });
+        $.post("/fan", {
+            "userName": $("input[name='userName']").val(),
+            "riceCount": $(".rice-container img").size(),
+            "bredCount": $(".bred-container img").size(),
+            "dishs": dishs
+        }, function (data) {
+            console.log(data);
+        });
+    }
 });
 
 /**
@@ -120,5 +139,6 @@ $(function () {
  */
 function sleep(millisecond) {
     var start = new Date().getTime();
-    while (new Date().getTime() - start >= millisecond) {}
+    while (new Date().getTime() - start >= millisecond) {
+    }
 }
