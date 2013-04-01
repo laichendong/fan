@@ -64,7 +64,8 @@ exports.fan = function (req, res) {
         var fanResult = {
             riceCount: 0,
             bredCount: 0,
-            dishs: []
+            dishs: [],
+            users: []
         };
         // 计算点菜结果
         Fan.find({date: d}, function (err, result) {
@@ -75,6 +76,7 @@ exports.fan = function (req, res) {
             for (var i = 0; i < result.length; i++) {
                 fanResult.riceCount += result[i].riceCount;
                 fanResult.bredCount += result[i].bredCount;
+                fanResult.users.push(result[i].userName);
                 for (var j = 0; j < result[i].dishs.length; j++) {
                     var flag = false;
                     for(var k=0; k<fanResult.dishs.length; k++){

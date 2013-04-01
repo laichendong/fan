@@ -65,10 +65,10 @@ html
             // 侧边栏
             div#side.fn-fl
                 div.side-box
-                    h2 点餐人员：
+                    h2 已点餐人员：
                     div.side-box-body
-                        p 赖晨东
-                        p 高飞
+                        - for (var i=0; i<fanResult.users.length; i++)
+                            p= fanResult.users[i]
                 div.side-box
                     h2 主食：
                     div.side-box-body
