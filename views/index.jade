@@ -20,11 +20,15 @@ html
                     a#fan-submit.fan-submit.btn(href="javascript:void(0);") 我选好了
                 // 个人信息
                 div.row
-                    label 我是：
+                    label
+                        b.start *&nbsp;
+                        | 我是：
                         input(type="text", name="userName", value="")
                 // 米饭和馒头
                 div.row.fn-clearfix
-                    div 主食：
+                    div.fn-fl
+                        b.start &nbsp;&nbsp;
+                        | 主食：
                     div.rice.fn-fl
                         label 米饭
                             a.rice-reduce-button.btn(href="javascript:void(0);") -
@@ -38,7 +42,9 @@ html
 
                 // 菜谱
                 div.row
-                    div 菜品：
+                    div
+                        b.start *&nbsp;
+                        | 菜品：
                         span.tip 您需要选
                             b(style="color:red; font-size:1.5em;") 1-3
                             | 种菜品，系统将根据大家的选择，投票决定最终吃什么

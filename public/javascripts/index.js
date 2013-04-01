@@ -113,10 +113,10 @@ $(function () {
             }
         }
         // 验证选择的主食数量
-        if ($("input[name='rice']").val() + $("input[name='bred']").val() <= 0) {
-            ElfDialog.alert("人是铁，饭是钢。主食还是要吃的。");
-            return;
-        }
+//        if ($("input[name='rice']").val() + $("input[name='bred']").val() <= 0) {
+//            ElfDialog.alert("人是铁，饭是钢。主食还是要吃的。");
+//            return;
+//        }
         // 验证菜的数量
         var $dishChecked = $(".dish-item.dish-checked");
         if ($dishChecked.size() == 0) {
