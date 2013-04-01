@@ -9,6 +9,7 @@
         "express": "3.1.0",
         "ejs": "*",
         "jade": "*",
-        "less-middleware": "*"
+        "less-middleware": "*",
+	    "mongoose" : "*"
     }
 }

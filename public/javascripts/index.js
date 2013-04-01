@@ -130,7 +130,21 @@ $(function () {
             "bredCount": $(".bred-container img").size(),
             "dishs": dishs
         }, function (data) {
-            console.log(data);
+            if (data.error && data.errorCode == 1) {
+                ElfDialog.alert("你今天已经点过菜了。");
+            } else if (data.success) {
+                // 更新页面中的数据
+                $("#riceTotalCount").text(data.data.riceCount);
+                $("#bredTotalCount").text(data.data.bredCount);
+                var $dishs = $("#dishs").empty();
+                $.each(data.data.dishs, function () {
+                    $dishs.append('<li>' + $(this)[0].name + ' <span class="disRank overt">' + $(this)[0].count + '</span></li>');
+                });
+                // 移除“我选好了”按钮
+                $("#fan-submit").remove();
+                // 弹出提示
+                ElfDialog.alert("<b style='color:red'>恭喜！</b>点菜成功！")
+            }
         });
     }
 });

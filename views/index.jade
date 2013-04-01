@@ -56,16 +56,16 @@ html
                 div
                     p
                         | 米饭：
-                        span#riceTotalCount.overt(origValue=7) 7
+                        span#riceTotalCount.overt= fanResult.riceCount
                         | 碗
                     p
                         | 馒头：
-                        span#bredTotalCount.overt(origValue=4) 4
+                        span#bredTotalCount.overt= fanResult.bredCount
                         | 个
-                ol
-                    - for (var i=0; i<dishs.length; i++)
-                        li= dishs[i].name
-                            span.dishRank.overt 5
+                ol#dishs
+                    - for (var j=0; j<fanResult.dishs.length; j++)
+                        li= fanResult.dishs[j].name
+                            span.dishRank.overt= fanResult.dishs[j].count
 
         script(src="/javascripts/index.js", type="text/javascript")
         script(src="/javascripts/elfDialog.js", type="text/javascript")
