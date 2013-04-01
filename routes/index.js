@@ -48,3 +48,7 @@ exports.index = function (req, res) {
         });
     }
 };
+
+exports.noIe = function(req, res) {
+    res.render('noIe.jade', {});
+};

@@ -29,6 +29,7 @@ app.configure('development', function () {
 });
 
 app.get('/', routes.index);
+app.get('/noIe', routes.noIe);
 app.get('/users', user.list);
 app.get('/users/validateUser', user.validateUser);
 app.post('/fan', fan.fan);
