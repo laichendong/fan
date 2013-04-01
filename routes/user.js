@@ -1,5 +1,6 @@
 
 var db = require('../data/db');
+var Fan = require('./fan');
 /**
  * 饭团成员列表
  * @param req
@@ -28,7 +29,27 @@ exports.validateUser = function (req, res) {
 
     res.setHeader('Content-Type', 'application/json');
     if (valiedated) {
-        res.send('{"valiedated" : true}');
+        // 判断用户今天是否已经点过餐了
+        var d = new Date();
+        d.setHours(0);
+        d.setMinutes(0);
+        d.setSeconds(0);
+        d.setMilliseconds(0);
+
+        Fan.Fan.findOne({
+            userName: userName,
+            date: d
+        }, function (err, result) {
+            if (err) {
+                console.error.bind(console, 'connection error:');
+            }
+            if (result != undefined) {
+                // 今天已经点过菜了
+                res.send('{"valiedated" : true, "dished" : true}');
+            } else {
+                res.send('{"valiedated" : true, "dished" : false}');
+            }
+        });
     } else {
         res.send('{"valiedated" : false}');
     }

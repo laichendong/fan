@@ -74,10 +74,18 @@ $(function () {
             }, function (json) {
                 if (json && json.valiedated) {
                     // 验证通过
-                    $userName.data("validated", json.valiedated)
-                        .next(".info").remove().end()
-                        .next(".error").remove().end()
-                        .after('<span class="info">来来，快看今天吃什么。</span>');
+                    if(json.dished){
+                        // 已经订过餐了
+                        $userName.data("validated", json.valiedated)
+                            .next(".info").remove().end()
+                            .next(".error").remove().end()
+                            .after('<span class="error">你今天已经点过餐了！</span>');
+                    } else {
+                        $userName.data("validated", json.valiedated)
+                            .next(".info").remove().end()
+                            .next(".error").remove().end()
+                            .after('<span class="info">来来，快看今天吃什么。</span>');
+                    }
                 } else {
                     $userName.data("validated", json.valiedated)
                         .next(".info").remove().end()
