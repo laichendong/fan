@@ -124,7 +124,12 @@ $(function () {
             return;
         }
         // 提交数据到后台
-        fan();
+        ElfDialog.confirm("一但提交，你将不能再更改点餐数据，是否确定提交？","", function(){
+            fan();
+            ElfDialog.close();
+        }, function(){
+            ElfDialog.close();
+        });
 
     });
 
@@ -153,7 +158,7 @@ $(function () {
                     $dishs.append('<li>' + $(this)[0].name + ' <span class="disRank overt">' + $(this)[0].count + '</span></li>');
                 });
                 // 移除“我选好了”按钮
-                $("#fan-submit").remove();
+                // $("#fan-submit").remove();
                 // 弹出提示
                 ElfDialog.alert("<b style='color:red'>恭喜！</b>点菜成功！")
             }
