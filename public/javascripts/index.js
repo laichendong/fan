@@ -3,8 +3,9 @@ $(function () {
      * 多吃一碗米饭
      */
     $(".rice-add-button").click(function () {
-        if ($(".rice-container img").size() < 3) {
-            $(".rice-container").append('<img class="rice-img" src="/images/rice.png" />')
+        var $riceInput = $("input[name=rice]");
+        if (parseInt($riceInput.val().trim()) < 3) {
+            $riceInput.val(parseInt($riceInput.val().trim()) + 1);
         } else {
             ElfDialog.pop("别吃太多，容易撑着。");
         }
@@ -14,8 +15,9 @@ $(function () {
      * 少吃一碗米饭
      */
     $(".rice-reduce-button").click(function () {
-        if ($(".rice-container img").size() > 0) {
-            $(".rice-container img:last").remove();
+        var $riceInput = $("input[name=rice]");
+        if (parseInt($riceInput.val().trim()) > 1) {
+            $riceInput.val(parseInt($riceInput.val().trim()) - 1);
         } else {
             ElfDialog.pop("已经没得吃了！");
         }
@@ -25,8 +27,9 @@ $(function () {
      * 多吃一个馒头
      */
     $(".bred-add-button").click(function () {
-        if ($(".bred-container img").size() < 3) {
-            $(".bred-container").append('<img class="bred-img" src="/images/bred.png" />')
+        var $bredInput = $("input[name=bred]");
+        if (parseInt($bredInput.val().trim()) < 3) {
+            $bredInput.val(parseInt($bredInput.val().trim()) + 1);
         } else {
             ElfDialog.pop("别吃太多，容易撑着。");
         }
@@ -36,8 +39,9 @@ $(function () {
      * 少吃一个馒头
      */
     $(".bred-reduce-button").click(function () {
-        if ($(".bred-container img").size() > 0) {
-            $(".bred-container img:last").remove();
+        var $bredInput = $("input[name=bred]");
+        if (parseInt($bredInput.val().trim()) > 1) {
+            $bredInput.val(parseInt($bredInput.val().trim()) - 1);
         } else {
             ElfDialog.pop("已经没得吃了！");
         }
@@ -50,7 +54,7 @@ $(function () {
         if (!$(this).data("checked")) {
             $(this).addClass("dish-checked").data("checked", true);
             if ($(".dish-item.dish-checked").size() > 3) {
-                ElfDialog.pop("别挑太多，把机会留给你的伙伴们吧！");
+                ElfDialog.pop("你最多可以选择三个菜品！");
                 $(this).removeClass("dish-checked").data("checked", false);
             }
         } else {
@@ -101,7 +105,7 @@ $(function () {
             }
         }
         // 验证选择的主食数量
-        if ($(".rice-img").size() + $(".bred-img").size() <= 0) {
+        if ($("input[name='rice']").val() + $("input[name='bred']").val() <= 0) {
             ElfDialog.alert("人是铁，饭是钢。主食还是要吃的。");
             return;
         }
@@ -126,8 +130,8 @@ $(function () {
         });
         $.post("/fan", {
             "userName": $("input[name='userName']").val(),
-            "riceCount": $(".rice-container img").size(),
-            "bredCount": $(".bred-container img").size(),
+            "riceCount": $("input[name='rice']").val(),
+            "bredCount": $("input[name='bred']").val(),
             "dishs": dishs
         }, function (data) {
             if (data.error && data.errorCode == 1) {
