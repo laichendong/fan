@@ -43,16 +43,17 @@ html
                             | 种菜品，系统将根据大家的选择，投票决定最终吃什么
                     ul.fn-clearfix
                         - for (var i=0; i<dishs.length; i++)
-                            li.dish-item
+                            li.dish-item(title=dishs[i].name+" "+dishs[i].price)
                                 div.dish-photo
                                     // todo 属性里绑定数据的写法？
                                     img(src=dishs[i].photoUrl)
                                 div.dish-name= dishs[i].name
-                                div.dish-info.fn-hide
-                                    p.dish-price ￥
-                                        // todo 嵌入js脚本，toFixed(2)
-                                        = dishs[i].price
-                                        | 元
+                                p.dish-price ￥
+                                    = dishs[i].price
+                                    | 元
+                                div.dish-checker
+                                //div.dish-info.fn-hide
+
 
             // 侧边栏
             div#side.fn-fl
