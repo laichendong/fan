@@ -16,7 +16,7 @@ $(function () {
      */
     $(".rice-reduce-button").click(function () {
         var $riceInput = $("input[name=rice]");
-        if (parseInt($riceInput.val().trim()) > 1) {
+        if (parseInt($riceInput.val().trim()) > 0) {
             $riceInput.val(parseInt($riceInput.val().trim()) - 1);
         } else {
             ElfDialog.pop("已经没得吃了！");
@@ -40,7 +40,7 @@ $(function () {
      */
     $(".bred-reduce-button").click(function () {
         var $bredInput = $("input[name=bred]");
-        if (parseInt($bredInput.val().trim()) > 1) {
+        if (parseInt($bredInput.val().trim()) > 0) {
             $bredInput.val(parseInt($bredInput.val().trim()) - 1);
         } else {
             ElfDialog.pop("已经没得吃了！");
