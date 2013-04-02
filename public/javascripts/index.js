@@ -108,7 +108,7 @@ $(function () {
                 sleep(800);
             }
             if (!$userName.data("validated")) {
-                ElfDialog.alert("我们还不知道你是谁呢！");
+                ElfDialog.alert('你还不是我们饭团成员，<br />去<a href="mailto:laichendong@gmail.com"><b>申请</b></a>吧');
                 return;
             }
         }
