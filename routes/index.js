@@ -54,6 +54,11 @@ exports.index = function (req, res) {
     }
 };
 
+/**
+ * 禁止ie访问的提示页面
+ * @param req
+ * @param res
+ */
 exports.noIe = function(req, res) {
     res.render('noIe.jade', {});
 };
