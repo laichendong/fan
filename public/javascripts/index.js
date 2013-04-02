@@ -154,8 +154,8 @@ $(function () {
                 $("#riceTotalCount").text(data.data.riceCount);
                 $("#bredTotalCount").text(data.data.bredCount);
                 var $dishs = $("#dishs").empty();
-                $.each(data.data.dishs, function () {
-                    $dishs.append('<li>' + $(this)[0].name + ' <span class="disRank overt">' + $(this)[0].count + '</span></li>');
+                $.each(data.data.dishs, function (i, o) {
+                    $dishs.append('<li><label><input type="checkbox" value="'+o[0].price+'" name="dishPrice">'+o[0].name+'<span>(￥<span class="red">'+o[0].price.toFixed(2)+'</span>元)</span></label></li>');
                 });
                 // 移除“我选好了”按钮
                 // $("#fan-submit").remove();
@@ -182,7 +182,7 @@ $(function () {
         riceTotalPrice += parseInt($("#bredTotalCount").text());
         $("#riceTotalPrice").text(isNaN(riceTotalPrice) ? "0.00" : riceTotalPrice.toFixed(2));
         // 人均价格
-        var averagePrice = (totalPrice / parseInt($("#userCount").text()));
+        var averagePrice = ((totalPrice + riceTotalPrice) / parseInt($("#userCount").text()));
         $("#averagePrice").text(isNaN(averagePrice) ? "0.00" : averagePrice.toFixed(2));
     }
     computPrice();

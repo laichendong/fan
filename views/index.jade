@@ -56,7 +56,7 @@ html
                                     img(src=dishs[i].photoUrl)
                                 div.dish-name= dishs[i].name
                                 p.dish-price ￥
-                                    = dishs[i].price
+                                    = dishs[i].price.toFixed(2)
                                     | 元
                                 div.dish-checker
                                 //div.dish-info.fn-hide
@@ -90,21 +90,23 @@ html
                         - for (var j=0; j<fanResult.dishs.length; j++)
                             li
                                 label
-                                    input(type="checkbox", value="32",name="dishPrice")
+                                    input(type="checkbox", value=fanResult.dishs[j].price,name="dishPrice")
                                     = fanResult.dishs[j].name
+                                    span.red &nbsp;
+                                        = fanResult.dishs[j].price.toFixed(2)
                     hr
                     div.price-show
                         div.fn-clearfix
                             p.fn-fl 菜品总价：￥
-                            span#totalPrice.fn-fl 32
+                            span#totalPrice.fn-fl 0.00
                             |元
                         div.fn-clearfix
                             p.fn-fl 主食总价：￥
-                            span#riceTotalPrice.fn-fl 32
+                            span#riceTotalPrice.fn-fl 0.00
                             |元
                         div.fn-clearfix
                             p.fn-fl 人均：￥
-                            span#averagePrice.fn-fl 32
+                            span#averagePrice.fn-fl 0.00
                             |元
 
 

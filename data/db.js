@@ -47,6 +47,13 @@ dishs.push(new dish("芥蓝", 18, "/images/dishs/28.png"));
 //dishs.push(new dish("", 28, "/images/dishs/8.png"));
 //dishs.push(new dish("", 28, "/images/dishs/8.png"));
 //dishs.push(new dish("", 28, "/images/dishs/8.png"));
+var findDishByName = exports.findDishByName = function(name) {
+    for(var i=0; i< dishs.length; i++){
+        if(dishs[i].name == name){
+            return dishs[i];
+        }
+    }
+}
 
 /**
  * 用户数据

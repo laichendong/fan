@@ -29,16 +29,18 @@ exports.index = function (req, res) {
                 fanResult.bredCount += result[i].bredCount;
                 fanResult.users.push(result[i].userName);
                 for (var j = 0; j < result[i].dishs.length; j++) {
+                    var dish = db.findDishByName(result[i].dishs[j]);
                     var flag = false;
                     for (var k = 0; k < fanResult.dishs.length; k++) {
                         var d = fanResult.dishs[k];
                         if (d.name == result[i].dishs[j]) {
                             d.count++;
+                            d.price = dish.price;
                             flag = true;
                         }
                     }
                     if (!flag) {
-                        fanResult.dishs.push({name: result[i].dishs[j], count: 1});
+                        fanResult.dishs.push({name: result[i].dishs[j], count: 1, price : dish.price});
                     }
                 }
 
@@ -46,6 +48,7 @@ exports.index = function (req, res) {
             fanResult.dishs.sort(function (a, b) {
                 return b.count - a.count;
             });
+            console.log(fanResult);
             res.render('index.jade', { dishs: db.dishs, fanResult: fanResult });
         });
     }
