@@ -164,6 +164,28 @@ $(function () {
             }
         });
     }
+
+    /**
+     * 价格计算器
+     */
+    $(":checkbox[name='dishPrice']").click(computPrice);
+    function computPrice(){
+        // 菜品总价
+        var totalPrice = 0;
+        $(":checkbox[name='dishPrice']:checked").each(function(i,o){
+            totalPrice += parseInt($(this).val());
+        });
+        $("#totalPrice").text(totalPrice.toFixed(2));
+        // 主食总价
+        var riceTotalPrice = 0;
+        riceTotalPrice += parseInt($("#riceTotalCount").text());
+        riceTotalPrice += parseInt($("#bredTotalCount").text());
+        $("#riceTotalPrice").text(isNaN(riceTotalPrice) ? "0.00" : riceTotalPrice.toFixed(2));
+        // 人均价格
+        var averagePrice = (totalPrice / parseInt($("#userCount").text()));
+        $("#averagePrice").text(isNaN(averagePrice) ? "0.00" : averagePrice.toFixed(2));
+    }
+    computPrice();
 });
 
 /**
