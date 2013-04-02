@@ -114,9 +114,9 @@ ol, ul, li {
 .row {
     margin-top: 15px;
 }
-.start,.red {
-    color:#ff3300;
-//    font-size:30px;
+
+.start, .red {
+    color: #ff3300; //    font-size:30px;
 }
 
 .button(@fontSize: 12px) {
@@ -150,9 +150,11 @@ ol, ul, li {
     margin: 0px 21px 0 0;
     background: #ff3300;
 }
-.fan-submit:hover{
+
+.fan-submit:hover {
     background: lighten(#ff3300, 10%);
 }
+
 // ----------------------------------------------------------
 #top {
     width: 1104px;
@@ -197,28 +199,30 @@ ol, ul, li {
     width: 815px;
     min-height: 600px;
 }
-#userCount,#averagePrice,#totalPrice,#riceTotalPrice{
+
+#userCount, #averagePrice, #totalPrice, #riceTotalPrice {
     font-size: 1em;
     color: #ff3300;
 }
+
 #side {
     margin-left: 10px;
     color: #ffffff;
-    .side-box{
+    .side-box {
         width: 240px;
         .border-radius;
         background: @bkColor;
         padding: 15px;
         .box-shadow-inset(2px, 2px, 3px, darken(@bkColor, 30%));
         margin-bottom: 20px;
-        h2{
+        h2 {
             font-weight: bolder;
-            font-size:1.5em;
+            font-size: 1.5em;
             text-shadow: -1px -1px 1px #333;
         }
         .price-show {
             text-align: right;
-            p{
+            p {
                 width: 160px;
             }
         }
@@ -256,7 +260,7 @@ ol, ul, li {
     }
     .dish-checker {
         width: 15px;
-        height:15px;
+        height: 15px;
         border: 3px solid lighten(#333, 0%);
         .border-radius(1px);
         .box-shadow-inset(1px, 1px, 3px, darken(#ccc, 40%));
@@ -285,7 +289,7 @@ ol, ul, li {
 
 }
 
-.dish-item:hover  {
+.dish-item:hover {
     background: #ff3300;
     .dish-price {
         color: #fff;
@@ -295,17 +299,17 @@ ol, ul, li {
 .dish-checked {
     .box-shadow(0px, 0px, 10px, darken(#ff3300, 0%));
     background: darken(#ff3300, 0%);
-    .dish-price{
-        color:#fff;
+    .dish-price {
+        color: #fff;
     }
-    .dish-checker{
-        border-color:#333;
+    .dish-checker {
+        border-color: #333;
     }
-    .dish-checker:after{
+    .dish-checker:after {
         content: "√";
         text-shadow: 0 0 3px #ff3300;
-        font-size:30px;
-        color:#ff3300;
+        font-size: 30px;
+        color: #ff3300;
         font-weight: bolder;
         position: absolute;
         top: -11px;
@@ -313,10 +317,11 @@ ol, ul, li {
     }
 }
 
-input[name=rice],input[name=bred]{
-    width:30px;
+input[name=rice], input[name=bred] {
+    width: 30px;
     text-align: center;
 }
+
 .rice {
     margin-right: 20px;
 }
