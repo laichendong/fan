@@ -59,7 +59,7 @@ exports.fan = function (req, res) {
     });
 
 
-
+    // 计算点菜结果
     function computFanResult() {
         var fanResult = {
             riceCount: 0,
@@ -67,7 +67,6 @@ exports.fan = function (req, res) {
             dishs: [],
             users: []
         };
-        // 计算点菜结果
         Fan.find({date: d}, function (err, result) {
             if (err) {
                 console.error.bind(console, 'connection error:');
@@ -94,12 +93,12 @@ exports.fan = function (req, res) {
                 }
 
             }
+            // 先按照热度倒排，再按价格正排
             fanResult.dishs.sort(function(a,b){
-                return b.count - a.count;
+                return ((b.count - a.count) == 0) ? (a.price - b.price) : (b.count - a.count);
             });
             res.send({"success" : true, "data" : fanResult});
         });
-//        res.render('index.jade', { dishs: db.dishs, fanResult: fanResult });
     }
 
 
