@@ -42,25 +42,60 @@ dishs.push(new dish("一品水晶虾", 58, "/images/dishs/25.png"));
 dishs.push(new dish("宫保鸡丁", 18, "/images/dishs/26.png"));
 dishs.push(new dish("油菜", 16, "/images/dishs/27.png"));
 dishs.push(new dish("芥蓝", 18, "/images/dishs/28.png"));
-//dishs.push(new dish("", 28, "/images/dishs/8.png"));
-//dishs.push(new dish("", 28, "/images/dishs/8.png"));
-//dishs.push(new dish("", 28, "/images/dishs/8.png"));
-//dishs.push(new dish("", 28, "/images/dishs/8.png"));
-//dishs.push(new dish("", 28, "/images/dishs/8.png"));
+//dishs.push(new dish("砂锅扁豆", 24, "/images/dishs/8.png"));
+//dishs.push(new dish("井冈山豆皮", 24, "/images/dishs/8.png"));
+//dishs.push(new dish("海味蛋卷煮娃娃菜", 38, "/images/dishs/8.png"));
+//dishs.push(new dish("青椒山薯仔", 36, "/images/dishs/8.png"));
+//dishs.push(new dish("干锅牛蛙", 48, "/images/dishs/8.png"));
+//dishs.push(new dish("四菌小鸡钵", 28, "/images/dishs/8.png"));
+//dishs.push(new dish("农家靠豆腐", 18, "/images/dishs/8.png"));
+//dishs.push(new dish("锅仔千叶豆腐", 26, "/images/dishs/8.png"));
+//dishs.push(new dish("蒜蓉粉丝娃娃菜", 26, "/images/dishs/8.png"));
+//dishs.push(new dish("铁板杏鲍菇", 38, "/images/dishs/8.png"));
+//dishs.push(new dish("农家下饭菜", 18, "/images/dishs/8.png"));
+//dishs.push(new dish("芥兰扒牛柳", 32, "/images/dishs/8.png"));
+//dishs.push(new dish("山菌西兰花", 22, "/images/dishs/8.png"));
+//dishs.push(new dish("腰果虾仁", 48, "/images/dishs/8.png"));
+//dishs.push(new dish("农家乐仔鸡", 28, "/images/dishs/8.png"));
+//dishs.push(new dish("糖醋杏仁排", 48, "/images/dishs/8.png"));
+//dishs.push(new dish("湘味小河虾", 28, "/images/dishs/8.png"));
+//dishs.push(new dish("韭香胡萝卜丝", 16, "/images/dishs/8.png"));
+//dishs.push(new dish("萝卜干腊肉", 32, "/images/dishs/8.png"));
+//dishs.push(new dish("咸蛋黄南瓜", 24, "/images/dishs/8.png"));
+//dishs.push(new dish("南粤煎豆腐", 18, "/images/dishs/8.png"));
+//dishs.push(new dish("生菜", 16, "/images/dishs/8.png"));
+//dishs.push(new dish("空心菜", 18, "/images/dishs/8.png"));
+//dishs.push(new dish("", 36, "/images/dishs/8.png"));
+//dishs.push(new dish("", 36, "/images/dishs/8.png"));
+//dishs.push(new dish("", 36, "/images/dishs/8.png"));
+
+
 var findDishByName = exports.findDishByName = function(name) {
     for(var i=0; i< dishs.length; i++){
         if(dishs[i].name == name){
             return dishs[i];
         }
     }
-}
+};
 
 /**
  * 用户数据
  * @type {Array}
  */
 var users = exports.users = [];
-users.push({name: "赖晨东", email: "laichendong@gmail.com", isTeamLeader: true});
-users.push({name: "高飞", email: "laichendong@gmail.com"});
-users.push({name: "陈有存", email: "laichendong@gmail.com"});
-users.push({name: "欧阳兴文", email: "laichendong@gmail.com"});
+users.push({name: "赖晨东", email: "", isTeamLeader: true});
+users.push({name: "高飞", email: ""});
+users.push({name: "陈有存", email: ""});
+users.push({name: "欧阳兴文", email: ""});
+users.push({name: "韩世超", email: ""});
+users.push({name: "许立龙", email: ""});
+users.push({name: "徐贤军", email: ""});
+users.push({name: "邵东", email: ""});
+users.push({name: "杨威", email: ""});
+users.push({name: "米闯", email: ""});
+users.push({name: "赵一国", email: ""});
+users.push({name: "王文尧", email: ""});
+users.push({name: "杨磊", email: ""});
+users.push({name: "牛万祥", email: ""});
+users.push({name: "王栋", email: ""});
+users.push({name: "曹佳东", email: ""});

@@ -155,7 +155,7 @@ $(function () {
                 $("#bredTotalCount").text(data.data.bredCount);
                 var $dishs = $("#dishs").empty();
                 $.each(data.data.dishs, function (i, o) {
-                    $dishs.append('<li><label><input type="checkbox" value="'+o[0].price+'" name="dishPrice">'+o[0].name+'<span>(￥<span class="red">'+o[0].price.toFixed(2)+'</span>元)</span></label></li>');
+                    $dishs.append('<li><label><input type="checkbox" value="'+$(this)[0].price+'" name="dishPrice">'+$(this)[0].name+'<span class="red">'+$(this)[0].price.toFixed(2)+'</span></label></li>');
                 });
                 // 移除“我选好了”按钮
                 // $("#fan-submit").remove();
