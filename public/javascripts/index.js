@@ -74,7 +74,7 @@ $(function () {
             }, function (json) {
                 if (json && json.valiedated) {
                     // 验证通过
-                    if(json.dished){
+                    if (json.dished) {
                         // 已经订过餐了
                         $userName.data("validated", json.valiedated)
                             .next(".info").remove().end()
@@ -124,10 +124,10 @@ $(function () {
             return;
         }
         // 提交数据到后台
-        ElfDialog.confirm("一但提交，你将不能再更改点餐数据，是否确定提交？","", function(){
+        ElfDialog.confirm("一但提交，你将不能再更改点餐数据，是否确定提交？", "", function () {
             fan();
             ElfDialog.close();
-        }, function(){
+        }, function () {
             ElfDialog.close();
         });
 
@@ -151,12 +151,21 @@ $(function () {
                 ElfDialog.alert("你今天已经点过菜了。");
             } else if (data.success) {
                 // 更新页面中的数据
+                var $users = $("#userCount").text(data.data.users.length).parent().next(".side-box-body").empty();
+                $.each(data.data.users, function (i, o) {
+                    var userName = $(this)[0];
+                    if (i < data.data.users.length - 1) {
+                        userName += "、";
+                    }
+                    $users.append('<span>' + userName + '</span>')
+                });
                 $("#riceTotalCount").text(data.data.riceCount);
                 $("#bredTotalCount").text(data.data.bredCount);
                 var $dishs = $("#dishs").empty();
                 $.each(data.data.dishs, function (i, o) {
-                    $dishs.append('<li><label><input type="checkbox" value="'+$(this)[0].price+'" name="dishPrice">'+$(this)[0].name+'<span class="red">'+$(this)[0].price.toFixed(2)+'</span></label></li>');
+                    $dishs.append('<li><label><input type="checkbox" value="' + $(this)[0].price + '" name="dishPrice">' + $(this)[0].name + '<span class="red">' + $(this)[0].price.toFixed(2) + '</span></label></li>');
                 });
+                computPrice();
                 // 移除“我选好了”按钮
                 // $("#fan-submit").remove();
                 // 弹出提示
@@ -169,10 +178,10 @@ $(function () {
      * 价格计算器
      */
     $(":checkbox[name='dishPrice']").click(computPrice);
-    function computPrice(){
+    function computPrice() {
         // 菜品总价
         var totalPrice = 0;
-        $(":checkbox[name='dishPrice']:checked").each(function(i,o){
+        $(":checkbox[name='dishPrice']:checked").each(function (i, o) {
             totalPrice += parseInt($(this).val());
         });
         $("#totalPrice").text(totalPrice.toFixed(2));
@@ -185,6 +194,7 @@ $(function () {
         var averagePrice = ((totalPrice + riceTotalPrice) / parseInt($("#userCount").text()));
         $("#averagePrice").text(isNaN(averagePrice) ? "0.00" : averagePrice.toFixed(2));
     }
+
     computPrice();
 });
 
