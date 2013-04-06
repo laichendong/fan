@@ -69,7 +69,7 @@ $(function () {
         var $userName = $(this);
         var userName = $(this).val().trim();
         if (userName) {
-            $.getJSON("/users/validateUser", {
+            $.getJSON("/fan/users/validateUser", {
                 "userName": userName
             }, function (json) {
                 if (json && json.valiedated) {
@@ -141,7 +141,7 @@ $(function () {
         $(".dish-item.dish-checked").each(function (i) {
             dishs.push($(this).find(".dish-name").text());
         });
-        $.post("/fan", {
+        $.post("/fan/fan", {
             "userName": $("input[name='userName']").val(),
             "riceCount": $("input[name='rice']").val(),
             "bredCount": $("input[name='bred']").val(),
