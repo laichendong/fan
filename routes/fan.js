@@ -33,7 +33,13 @@ exports.fan = function (req, res) {
                 break;
             }
         }
+        if (!isMember) {
+            res.send('{"error" : true, "errorCode" : 2}');
+        }
+    } else {
+        res.send('{"error" : true, "errorCode" : 2}');
     }
+
     // 判断用户今天是否已经点过餐了
     var d = new Date();
     d.setHours(0);
@@ -58,7 +64,6 @@ exports.fan = function (req, res) {
         }
     });
 
-
     // 计算点菜结果
     function computFanResult() {
         var fanResult = {
@@ -79,28 +84,27 @@ exports.fan = function (req, res) {
                 for (var j = 0; j < result[i].dishs.length; j++) {
                     var dish = db.findDishByName(result[i].dishs[j]);
                     var flag = false;
-                    for(var k=0; k<fanResult.dishs.length; k++){
+                    for (var k = 0; k < fanResult.dishs.length; k++) {
                         var d = fanResult.dishs[k];
-                        if(d.name == result[i].dishs[j]){
+                        if (d.name == result[i].dishs[j]) {
                             d.count++;
                             d.price = dish.price;
                             flag = true;
                         }
                     }
-                    if(!flag){
-                        fanResult.dishs.push({name:result[i].dishs[j],count:1, price : dish.price});
+                    if (!flag) {
+                        fanResult.dishs.push({name: result[i].dishs[j], count: 1, price: dish.price});
                     }
                 }
 
             }
             // 先按照热度倒排，再按价格正排
-            fanResult.dishs.sort(function(a,b){
+            fanResult.dishs.sort(function (a, b) {
                 return ((b.count - a.count) == 0) ? (a.price - b.price) : (b.count - a.count);
             });
-            res.send({"success" : true, "data" : fanResult});
+            res.send({"success": true, "data": fanResult});
         });
     }
-
 
 }
 ;

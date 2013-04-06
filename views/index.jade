@@ -52,14 +52,12 @@ html
                         - for (var i=0; i<dishs.length; i++)
                             li.dish-item(title=dishs[i].name+" "+dishs[i].price)
                                 div.dish-photo
-                                    // todo 属性里绑定数据的写法？
                                     img(src=dishs[i].photoUrl)
                                 div.dish-name= dishs[i].name
                                 p.dish-price ￥
                                     = dishs[i].price.toFixed(2)
                                     | 元
                                 div.dish-checker
-                                //div.dish-info.fn-hide
 
 
             // 侧边栏

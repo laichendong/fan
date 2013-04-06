@@ -38,6 +38,9 @@
     <file url="PROJECT" charset="UTF-8" />
   </component>
   <component name="IdProvider" IDEtalkID="ADBD02B6561BC1950F102888439E1B31" />
+  <component name="JavaScriptLibraryMappings">
+    <file url="PROJECT" libraries="{Node.js v0.10.1 Core Modules}" />
+  </component>
   <component name="Palette2">
     <group name="Swing">
       <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.png" removable="false" auto-create-binding="false" can-attach-label="false">
