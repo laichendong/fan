@@ -24,7 +24,7 @@ mongoose.connect('mongodb://localhost/fans');
 
 exports.fan = function (req, res) {
     res.setHeader('Content-Type', 'application/json');
-    // 判断用户是否是饭团成员
+    // 判断用户是否是饭团成员1
     var isMember = false;
     if (req.body.userName) {
         for (var i = 0; i < db.users.length; i++) {
